@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Sender Config</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            background: #28a745;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .status {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Email Resume Sender</h2>
+    <form id="emailForm" enctype="multipart/form-data">
+        <label for="senderEmail">Sender Email</label>
+        <input type="email" id="senderEmail" name="sender_email" required>
+
+        <label for="senderPassword">App Password</label>
+        <input type="password" id="senderPassword" name="sender_password" required>
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required>
+Dear {name},
+
+I hope this finds you well.
+Please find attached my resume.
+
+Best,
+Achhuta
+        </textarea>
+
+        <label for="resumeFile">Upload Resume (PDF)</label>
+        <input type="file" id="resumeFile" name="resume_file" accept=".pdf" required>
+
+        <label for="csvFile">Upload CSV (Emails)</label>
+        <input type="file" id="csvFile" name="csv_file" accept=".csv" required>
+
+        <button type="button" onclick="saveConfig()">Save Config</button>
+        <button type="button" onclick="sendEmails()">Send Emails</button>
+
+        <div class="status" id="status"></div>
+    </form>
+</div>
+
+<script>
+    function saveConfig() {
+        const form = document.getElementById("emailForm");
+        const formData = new FormData(form);
+
+        fetch("/save_config", {
+            method: "POST",
+            body: formData
+        }).then(res => res.json())
+          .then(data => document.getElementById("status").textContent = data.message)
+          .catch(() => document.getElementById("status").textContent = "Error saving config");
+    }
+
+    function sendEmails() {
+        fetch("/send_emails", {
+            method: "POST"
+        }).then(res => res.json())
+          .then(data => {
+              if (data.output) {
+                  document.getElementById("status").textContent = "Emails sent! Check the log.";
+                  console.log(data.output);
+              } else {
+                  document.getElementById("status").textContent = data.error || "Error sending emails.";
+              }
+          });
+    }
+</script>
+</body>
+</html>

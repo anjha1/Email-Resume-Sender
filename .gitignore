@@ -1,0 +1,38 @@
+# Ignore virtual environment
+myenv/
+venv/
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# macOS
+.DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Environment variables / secrets
+config.json
+
+# Log files
+*.log
+email_log.txt
+
+# Python egg metadata
+*.egg-info/
+
+# VSCode project files
+.vscode/
+
+# pycache or debug artifacts
+*.pyo
+*.pyd
+
+# Node modules (if using JS dependencies in frontend)
+node_modules/
+
+# Compiled C extensions
+*.so
