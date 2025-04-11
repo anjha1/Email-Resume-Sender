@@ -79,7 +79,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="senderPassword" class="form-label">Sender Email Password</label>
+                <label for="senderPassword" class="form-label">Sender Email app password (<a href="https://myaccount.google.com/apppasswords" target="_blank">To create a app password</a>)</label>
                 <input type="password" class="form-control" id="senderPassword" name="sender_password" required>
             </div>
 
@@ -90,15 +90,21 @@
 
             <div class="mb-3">
                 <label for="message" class="form-label">Message</label>
-                <textarea id="message" name="message" class="form-control" rows="6" required>Dear {name},
-
-I hope this finds you well.
-Please find attached my resume.
-
-Best,
-Achhuta</textarea>
+                <textarea id="message" name="message" class="form-control" rows="15" required>Dear {name},
+            
+            I hope you're doing well.
+            
+            My name is Achhuta Nand Jha, and I'm reaching out to express my interest in the Data Scientist role at your organization. I have hands-on experience in Python, SQL, Machine Learning, Deep learning ,NLP and Data Visualization, along with successful project deliveries using IBM Watson Studio, GCP, and AutoAI platforms.
+            
+            I'd be honored to contribute my skills to your team. Please let me know if we can connect for a quick conversation.
+            
+            Looking forward to hearing from you.
+            
+            Best regards,  
+            Achhuta Nand Jha  
+           </textarea>
             </div>
-
+            
             <div class="mb-3">
                 <label for="resumeFile" class="form-label">Upload Resume (PDF)</label>
                 <input type="file" class="form-control" id="resumeFile" name="resume_file" accept=".pdf" required>
@@ -121,6 +127,12 @@ Achhuta</textarea>
     <footer>
        <h6>Developed by <a href="https://anjha1.github.io/portfolio-Home/">ACHHUTA NAND JHA</a><h6>
     </footer>
+    <footer style="text-align: center; padding: 20px; background-color: #f0f0f0; margin-top: 50px;">
+        <a href="/privacy-policy.html" target="_blank" style="color: #0066cc; text-decoration: none; font-weight: bold;">
+          Privacy Policy / प्राइवेसी पॉलिसी
+        </a>
+    </footer>
+      
 
     <script>
         function saveConfig() {
